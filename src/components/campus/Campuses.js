@@ -12,7 +12,7 @@ const Campuses = ()=>{
     },[])
 
     const campuses = useSelector(state=>state.campuses)
-    // console.log('hi',campuses)
+
 
     return(
         <div>

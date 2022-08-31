@@ -2641,8 +2641,7 @@ var Campuses = function Campuses() {
   }, []);
   var campuses = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(function (state) {
     return state.campuses;
-  }); // console.log('hi',campuses)
-
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, Array.isArray(campuses) ? campuses.map(function (itm) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_Campus__WEBPACK_IMPORTED_MODULE_1__["default"], {
       key: itm.id,

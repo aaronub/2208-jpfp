@@ -26,7 +26,7 @@ const CampusPage = ()=>{
             <div>{!Array.isArray(campus) 
                 ? campus.students.map(itm=>
                     <Link to={`/students/${itm.id}`}>{itm.firstName+' '+itm.lastName}</Link>
-                  )
+                  ) 
                 : null}
             </div>
         </div>
