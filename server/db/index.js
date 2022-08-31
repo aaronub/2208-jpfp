@@ -8,17 +8,17 @@ const Campus = require('./campus')
 const campuses = [
   {
   name: 'Drexel Avenue School',
-  imageUrl:'https://illustoon.com/photo/thum/2873.png',
+  imageUrl:'https://www.usnews.com/dims4/USNEWS/71a8df3/17177859217/thumbnail/256x256/quality/85/?url=https%3A%2F%2Fmedia.beam.usnews.com%2F39%2F4587aa9f863870da97d88e408aba9d%2Fcollege-photo_12762.jpg',
   address:'Westbury NY',
   description:'Its a good elementary school!'
   },{
   name: 'The North Hills School',
-  imageUrl:'https://www.saveourlandsaveourtowns.org/images/smallschools.jpg',
+  imageUrl:'https://www.usnews.com/dims4/USNEWS/1197d08/17177859217/thumbnail/256x256/quality/85/?url=https%3A%2F%2Fmedia.beam.usnews.com%2F2a%2F625aa26f9c4544283a51182de20834%2FFirstDayInstaWIDE-1_USNews.jpg',
   address:'Queens NY',
   description:'Its an excellent elementary school!'
   },{
   name: 'Queensborough Community College',
-  imageUrl:'https://pbs.twimg.com/profile_images/1546501277340811264/lQ687qjX_400x400.jpg',
+  imageUrl:'https://resources.finalsite.net/images/f_auto,q_auto,t_image_size_1/v1635255884/doane/yjfzvmktnviq57ald35x/MorningCircleOctober2021.jpg',
   address:'Queens NY',
   description:'Its a good college!'
   }
@@ -28,25 +28,25 @@ const students =[
     firstName: 'Aaron',
     lastName: 'Wang',
     email: 'wo-08@hotmail.com',
-    imageUrl: 'https://image.shutterstock.com/image-photo/background-perfect-short-cut-green-260nw-12971728.jpg',
+    imageUrl: 'https://l450v.alamy.com/450v/2hwe125/little-boy-in-tracksuit-guy-got-ready-for-sports-activities-cheerful-person-standing-pose-cartoon-comic-style-flat-design-single-character-2hwe125.jpg',
     gpa: 3.9,
   },{
     firstName: 'Dora',
     lastName: 'Zhang',
     email: 'dorazhang86@gmail.com',
-    imageUrl: 'https://media.istockphoto.com/photos/many-little-fluffy-clouds-in-blue-sky-in-sunny-day-picture-id1040911866?k=20&m=1040911866&s=170667a&w=0&h=5kYwxdKOTlSSCapucc5NL982kcy0xoz2l_t386oDRqQ=',
+    imageUrl: 'https://l450v.alamy.com/450v/2h9h5jy/female-cook-in-overalls-girl-from-kitchen-in-an-apron-cheerful-person-standing-pose-cartoon-comic-style-flat-design-single-character-2h9h5jy.jpg',
     gpa: 3.8,
   },{
     firstName: 'Tom',
     lastName: 'Li',
     email: 'tomli00@gmail.com',
-    imageUrl: 'https://image.shutterstock.com/image-vector/vector-cartoon-yellow-sun-shining-260nw-1914594316.jpg',
+    imageUrl: 'https://c8.alamy.com/zooms/6/e5566fcb06c6469d9b8078805fd0bd29/2h7ce4f.jpg',
     gpa: 3.7, 
   },{
     firstName: 'Jerry',
     lastName: 'Zhao',
     email: 'jerryzhao00@gmail.com',
-    imageUrl: 'https://image.shutterstock.com/image-photo/smart-black-child-student-smiling-260nw-1751973791.jpg',
+    imageUrl: 'https://c8.alamy.com/zooms/6/d637d3fd8b0a42c1b2ad6b53061f3da2/2h6ggek.jpg',
     gpa: 3.6, 
   }
 ]

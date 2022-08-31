@@ -26,7 +26,7 @@ const Student = db.define('student', {
     },
     imageUrl:{
         type:Sequelize.STRING,
-        defaultValue:'https://www.pace.edu/sites/default/files/styles/16_9_1600x900/public/2022-04/student-development-nyc-interior-hero.jpg?h=993b43e0&itok=e4wmAYH3'
+        defaultValue:'https://lumiere-a.akamaihd.net/v1/images/character_themuppets_kermit_09279e8e.jpeg?region=0,0,300,300'
     },
     gpa:{
         type:Sequelize.DECIMAL(10,1),

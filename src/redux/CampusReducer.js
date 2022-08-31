@@ -3,15 +3,20 @@ import axios from 'axios';
 //action type
 const GET_CAMPUSES = 'GET_CAMPUSES'
 const GET_CAMPUS = 'GET-CAMPUS'
+const CREATE_CAMPUS = 'CREATE_CAMPUS'
 
 //action creator
-const getCampuses = (campuses)=> ({
+const getCampuses = (campuses)=>({
      type:GET_CAMPUSES,
      campuses,
 })
-const getCampus = (campus) => ({
+const getCampus = (campus)=>({
      type: GET_CAMPUS,
      campus,
+})
+const createCampus = (campus)=>({
+     type: CREATE_CAMPUS,
+     campus
 })
 
 //thunk
@@ -27,6 +32,12 @@ export const _getCampus = (id) => {
           dispatch(getCampus(data))
      }
 }
+export const _createCampus = (campus)=>{
+     return async (dispatch)=>{
+          const {data} = await axios.post('/api/campuses', campus)
+          dispatch(createCampus(data))
+     }
+}
 
 const initState = []
 //reducer function
@@ -37,6 +48,9 @@ const CampusReducer = (state=initState, action)=>{
 
           case GET_CAMPUS:
                return action.campus
+
+          case CREATE_CAMPUS:
+               return [...state, action.campus];
 
           default:
                return state

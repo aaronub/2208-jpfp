@@ -18,12 +18,17 @@ const StudentPage = ()=>{
 
     return (
         <div>
-            <div>{student.name}</div>
+            <div>{student.firstName + ' ' + student.lastName}</div>
             <div>{student.email}</div>
             <div>{student.gpa}</div>
             <img src={student.imageUrl}/>
             <div>Campus:</div>
-            <div>{!Array.isArray(student) ? <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link>: null}
+            <div>{!Array.isArray(student) 
+                ?  (student.campus
+                    ? <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link>
+                    : 'No students'
+                   )
+                : null}
             </div>
         </div>
     )
