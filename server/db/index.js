@@ -10,12 +10,12 @@ const campuses = [
   name: 'Drexel Avenue School',
   imageUrl:'https://illustoon.com/photo/thum/2873.png',
   address:'Westbury NY',
-  description:'Its a good elementary shcool!'
+  description:'Its a good elementary school!'
   },{
   name: 'The North Hills School',
   imageUrl:'https://www.saveourlandsaveourtowns.org/images/smallschools.jpg',
   address:'Queens NY',
-  description:'Its an excellent elementary shcool!'
+  description:'Its an excellent elementary school!'
   },{
   name: 'Queensborough Community College',
   imageUrl:'https://pbs.twimg.com/profile_images/1546501277340811264/lQ687qjX_400x400.jpg',
@@ -52,19 +52,30 @@ const students =[
 ]
 
 
-
 const syncAndSeed = async () => {
     await db.sync({ force: true });
 
     //use this area to sync your database
+    await Promise.all(campuses.map(campus => {
+      return Campus.create(campus);
+    }));
 
     await Promise.all(students.map(student => {
       return Student.create(student);
     }));
-    await Promise.all(campuses.map(campus => {
-      return Campus.create(campus);
-    }));
-  
+
+    const student1 = await Student.findByPk(1)
+    student1.update({campusId: 1})
+    await student1.save()
+    const student2 = await Student.findByPk(2)
+    student2.update({campusId: 1})
+    await student2.save()
+    const student3 = await Student.findByPk(3)
+    student3.update({campusId: 2})
+    await student3.save()
+    const student4 = await Student.findByPk(4)
+    student4.update({campusId: 3})
+    await student4.save()
 
     console.log(`
     Seeding successful!

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Campus = (props)=>{
     return(
@@ -7,6 +8,7 @@ const Campus = (props)=>{
             <p>{props.data.address}</p>
             <p>{props.data.description}</p>
             <img src={props.data.imageUrl}/>
+            <Link to={`/campuses/${props.data.id}`}>{props.data.name}</Link>
         </div>
     )
 }

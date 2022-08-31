@@ -1,5 +1,5 @@
 import React from 'react';
-import Student from './Studnet';
+import Student from './Student';
 import {useSelector,useDispatch} from 'react-redux';
 import { _getStudents } from '../../redux/StudentReducer';
 
@@ -14,9 +14,9 @@ const Students = ()=>{
 
     return(
         <div>
-            {students.map(itm=>
-                <Student key={itm.id} data={itm}/>    
-            )}
+            {Array.isArray(students)
+            ? students.map(itm=><Student key={itm.id} data={itm}/>)
+            : null}
         </div>
     )
 }

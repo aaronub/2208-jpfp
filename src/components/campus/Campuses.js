@@ -16,9 +16,9 @@ const Campuses = ()=>{
 
     return(
         <div>
-            {campuses.map(itm=>
+            {Array.isArray(campuses) ? campuses.map(itm=>
                 <Campus key={itm.id} data={itm}/>    
-            )}
+            ): null}
         </div>
     )
 }
