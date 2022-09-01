@@ -4,6 +4,7 @@ import axios from 'axios';
 const GET_STUDENTS = 'GET_STUDENTS'
 const GET_STUDENT = 'GET_STUDENT'
 const CREATE_STUDENT = 'CREATE_STUDENT'
+const DELETE_STUDENT = 'DELETE_STUDENT'
 
 //action creator
 const getStudents = (students) => ({
@@ -16,6 +17,10 @@ const getStudent = (student) => ({
 })
 const createStudent = (student)=>({
      type:CREATE_STUDENT,
+     student,
+})
+const deleteStudent = (student)=>({
+     type:DELETE_STUDENT,
      student,
 })
 
@@ -35,8 +40,13 @@ export const _getStudent = (id) => {
 export const _createStudent = (student)=>{
      return async (dispatch)=>{
           const {data} = await axios.post('/api/students', student);
-          console.log('data:', data);
           dispatch(createStudent(data))
+     }
+}
+export const _deleteStudent = (id)=>{
+     return async (dispatch)=>{
+          const {data} = await axios.delete(`/api/students/${id}`)
+          dispatch(deleteStudent(data))
      }
 }
 
@@ -53,6 +63,10 @@ const StudentReducer = (state=initState, action)=>{
 
           case CREATE_STUDENT:
                return [...state, action.student]
+
+          case DELETE_STUDENT:
+               const newStudents = state.filter(itm=> itm.id !== action.student.id)
+               return [...newStudents]
 
           default:
                return state

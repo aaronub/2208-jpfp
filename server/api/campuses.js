@@ -19,12 +19,6 @@ router.get('/:id', async(req, res, next)=>{
     try {
         const campus = await Campus.findByPk(req.params.id,
             {include:Student})
-        // how to use magic method?
-        //  const campus = await Campus.getStudents({
-        //     where:{
-        //         id:req.params.id
-        //     }
-        // })
         res.send(campus)
     } catch (error) {
         next(error)
@@ -37,6 +31,17 @@ router.post('/', async (req, res, next) => {
         const campus = await Campus.create(req.body);
         res.status(201).send(campus)
         
+    } catch (error) {
+        next(error)
+    }
+})
+
+//Delete /api/campuses/:id
+router.delete('/:id', async (req, res, next)=>{
+    try {
+        const campus = await Campus.findByPk(req.params.id)
+        await campus.destroy()
+        res.send(campus)
     } catch (error) {
         next(error)
     }

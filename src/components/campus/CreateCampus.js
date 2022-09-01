@@ -29,7 +29,7 @@ const CreateCampus = () => {
             <label htmlFor='name'>Name:</label>
             <input name='name' value={name} onChange={handleChangeName}></input>
 
-            <lable htmlFor='address'>Address:</lable>
+            <label htmlFor='address'>Address:</label>
             <input name='address' value={address} onChange={handleChangeAddress}></input>
 
             <button type='submit'>Add new campus</button>

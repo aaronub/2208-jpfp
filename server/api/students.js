@@ -36,5 +36,16 @@ router.post('/', async(req, res, next)=>{
     }
 })
 
+//DELETE /api/students
+router.delete('/:id', async (req, res, next)=>{
+    try {
+        const student = await Student.findByPk(req.params.id);
+        student.destroy()
+        res.send(student)
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 module.exports = router

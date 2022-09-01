@@ -4,6 +4,7 @@ import axios from 'axios';
 const GET_CAMPUSES = 'GET_CAMPUSES'
 const GET_CAMPUS = 'GET-CAMPUS'
 const CREATE_CAMPUS = 'CREATE_CAMPUS'
+const DELETE_CAMPUS = 'DELETE_CAMPUS'
 
 //action creator
 const getCampuses = (campuses)=>({
@@ -17,6 +18,10 @@ const getCampus = (campus)=>({
 const createCampus = (campus)=>({
      type: CREATE_CAMPUS,
      campus
+})
+const deleteCampus = (campus)=>({
+     type: DELETE_CAMPUS,
+     campus,
 })
 
 //thunk
@@ -38,6 +43,12 @@ export const _createCampus = (campus)=>{
           dispatch(createCampus(data))
      }
 }
+export const _deleteCampus = (id)=>{
+     return async (dispatch)=>{
+          const {data} = await axios.delete(`/api/campuses/${id}`)
+          dispatch(deleteCampus(data))
+     }
+}
 
 const initState = []
 //reducer function
@@ -51,6 +62,10 @@ const CampusReducer = (state=initState, action)=>{
 
           case CREATE_CAMPUS:
                return [...state, action.campus];
+          
+          case DELETE_CAMPUS:
+               const newCampuses = state.filter(itm=> itm.id !== action.campus.id);
+               return [...newCampuses]
 
           default:
                return state

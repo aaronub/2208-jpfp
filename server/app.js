@@ -14,12 +14,12 @@ app.use(volleyball)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-//this is where some things should go
-app.get('/', (req, res, next) => {
-  res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
-});
-
 app.use('/api', require('./api'))
+
+//this is where some things should go
+app.get("*", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 app.use((req, res, next) => {
     const error = Error('page not found');

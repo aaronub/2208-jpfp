@@ -21,6 +21,9 @@ const CreateStudent = ()=>{
     const handleSubmit = ()=>{
         event.preventDefault();
         dispatch(_createStudent({firstName, lastName, email}))
+        setFirstName('')
+        setLastName('')
+        setEmail('')
     } 
 
     return(
@@ -31,7 +34,7 @@ const CreateStudent = ()=>{
             <label htmlFor='lastName'>LastName:</label>
             <input name='lastName' value={lastName} onChange={handleChangeLastName}></input>
 
-            <lable htmlFor='email'>Email:</lable>
+            <label htmlFor='email'>Email:</label>
             <input name='email' value={email} onChange={handleChangeEmail}></input>
 
             <button type='submit'>Add new student</button>
