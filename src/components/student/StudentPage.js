@@ -3,6 +3,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import { _getStudent } from '../../redux/StudentReducer';
 import {Link} from 'react-router-dom';
+import UpdateStudent from './UpdateStudent';
 
 
 const StudentPage = ()=>{
@@ -26,10 +27,11 @@ const StudentPage = ()=>{
             <div>{!Array.isArray(student) 
                 ?  (student.campus
                     ? <Link to={`/campuses/${student.campus.id}`}>{student.campus.name}</Link>
-                    : 'No students'
+                    : 'Not registered yet!'
                    )
                 : null}
             </div>
+            <UpdateStudent/>
         </div>
     )
 }

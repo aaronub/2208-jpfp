@@ -47,5 +47,15 @@ router.delete('/:id', async (req, res, next)=>{
     }
 })
 
+//PUT /api/student/:id
+router.put('/:id', async(req, res, next)=>{
+    try {
+        const student = await Student.findByPk(req.params.id)
+        student.update(req.body)
+        res.send(student);      
+    } catch (error) {
+        next(error)
+    }
+})
 
 module.exports = router

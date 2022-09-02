@@ -5,6 +5,8 @@ const GET_STUDENTS = 'GET_STUDENTS'
 const GET_STUDENT = 'GET_STUDENT'
 const CREATE_STUDENT = 'CREATE_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
+const UPDATE_STUDENT = 'UPDATE_STUDENT'
+const UPDATE_STUDENT_CAMPUSID = 'UPDATE_STUDENT_CAMPUSID'
 
 //action creator
 const getStudents = (students) => ({
@@ -23,12 +25,20 @@ const deleteStudent = (student)=>({
      type:DELETE_STUDENT,
      student,
 })
+const updateStudent = (student)=>({
+     type:UPDATE_STUDENT,
+     student,
+})
+const updateStudentCampusId = (student)=>({
+     type:UPDATE_STUDENT_CAMPUSID,
+     student
+})
 
 //thunk
 export const _getStudents = () => {
      return async (dispatch) => {
        const { data } = await axios.get('/api/students');
-       dispatch(getStudents(data));
+       dispatch(getStudents(data.sort((a,b)=>a.id-b.id)));
      };
  };
 export const _getStudent = (id) => {
@@ -49,6 +59,19 @@ export const _deleteStudent = (id)=>{
           dispatch(deleteStudent(data))
      }
 }
+export const _updateStudent = (id, student)=>{
+     return async (dispatch)=>{
+          const {data} = await axios.put(`/api/students/${id}`, student)
+          dispatch(updateStudent(data))
+     }
+}
+
+export const _updateStudentCampusId = (id, student)=>{
+     return async(dispatch)=>{
+          const {data} = await axios.put(`/api/students/${id}`, student)
+          dispatch(updateStudentCampusId(data))
+     }
+}
 
 
 const initState = []
@@ -67,6 +90,12 @@ const StudentReducer = (state=initState, action)=>{
           case DELETE_STUDENT:
                const newStudents = state.filter(itm=> itm.id !== action.student.id)
                return [...newStudents]
+
+          case UPDATE_STUDENT:
+               return action.student
+
+          case UPDATE_STUDENT_CAMPUSID:
+               return action.student
 
           default:
                return state

@@ -36,7 +36,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-//Delete /api/campuses/:id
+//DELETE /api/campuses/:id
 router.delete('/:id', async (req, res, next)=>{
     try {
         const campus = await Campus.findByPk(req.params.id)
@@ -46,5 +46,17 @@ router.delete('/:id', async (req, res, next)=>{
         next(error)
     }
 })
+
+// PUT /api/campuses/:id
+router.put('/:id', async (req, res, next)=>{
+    try {
+        const campus = await Campus.findByPk(req.params.id, {include:Student});
+        campus.update(req.body);
+        res.send(campus)
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 module.exports = router

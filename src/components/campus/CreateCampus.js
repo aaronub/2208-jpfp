@@ -6,6 +6,7 @@ import { _createCampus } from '../../redux/CampusReducer';
 const CreateCampus = () => {
     const [name, setName] = React.useState('');
     const [address, setAddress] = React.useState('');
+    const [warning, setWarning] = React.useState('')
     const dispatch = useDispatch()
 
     const handleChangeName = (event)=>{
@@ -17,7 +18,11 @@ const CreateCampus = () => {
 
     const handleSubmit = (event)=>{
         event.preventDefault();
-        dispatch(_createCampus({name, address}))
+        if (name && address) {
+            dispatch(_createCampus({name, address}))        
+        } else {
+            setWarning('Both boxes need to be filled!')
+        }
         setName('');
         setAddress('')
     }
@@ -34,6 +39,7 @@ const CreateCampus = () => {
 
             <button type='submit'>Add new campus</button>
             <Link to={'/'}>Cancel</Link>
+            <div>{warning}</div>
         </form>
     )
 }

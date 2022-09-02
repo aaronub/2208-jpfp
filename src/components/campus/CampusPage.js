@@ -3,7 +3,9 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import { _getCampus } from '../../redux/CampusReducer';
 import {Link} from 'react-router-dom'
-
+import UpdateCampus from './UpdateCampus';
+import Unregister from './Unregister';
+import { _updateStudentCampusId } from '../../redux/StudentReducer';
 
 const CampusPage = ()=>{
     const dispatch = useDispatch()
@@ -22,13 +24,23 @@ const CampusPage = ()=>{
             <div>{campus.address}</div>
             <div>{campus.description}</div>
             <img src={campus.imageUrl}/>
-            <div>Students:</div>
             <div>{!Array.isArray(campus) 
-                ? campus.students.map(itm=>
-                    <Link to={`/students/${itm.id}`}>{itm.firstName+' '+itm.lastName}</Link>
-                  ) 
+                ? ( campus.students 
+                    ? 
+                    <div>
+                        <div>Students:</div>
+                        {campus.students.map(itm=>
+                            <div key={itm.id}>
+                                <Unregister campusId={params.id} data={itm}/>
+                                <div></div>
+                            </div>) }   
+                    </div>
+                    : 'Campus not found!'
+                ) 
                 : null}
             </div>
+            <p></p>
+            <UpdateCampus/>
         </div>
     )
 }

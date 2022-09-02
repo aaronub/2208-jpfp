@@ -1,14 +1,15 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { _createStudent } from '../../redux/StudentReducer';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { _updateStudent } from "../../redux/StudentReducer";
+import { useParams, Link } from "react-router-dom";
+ 
 
-const CreateStudent = ()=>{
+const UpdateStudent = ()=>{
+    const dispatch = useDispatch()
     const [firstName, setFirstName] = React.useState('')
     const [lastName, setLastName] = React.useState('')
-    const [email, setEmail] = React.useState('')
-    const [warning, setWarning] = React.useState('')
-    const dispatch = useDispatch()
+    const [email, setEmail] = React.useState('');
+    const params = useParams()
 
     const handleChangeFisrtName = (event)=>{
         setFirstName(event.target.value)
@@ -21,18 +22,14 @@ const CreateStudent = ()=>{
     }
     const handleSubmit = (event)=>{
         event.preventDefault();
-        if (firstName && lastName && email) {
-            dispatch(_createStudent({firstName, lastName, email}))
-        } else {
-            setWarning('All three boxes need to be filled!')
-        }
+        dispatch(_updateStudent(params.id, {firstName, lastName, email}))
         setFirstName('')
         setLastName('')
         setEmail('')
     } 
 
     return(
-        <form id='student-form' onSubmit={handleSubmit}>
+        <form id='update-student-form' onSubmit={handleSubmit}>
             <label htmlFor='firstName'>FirstName:</label>
             <input name='firstName' value={firstName} onChange={handleChangeFisrtName}></input>
 
@@ -42,12 +39,11 @@ const CreateStudent = ()=>{
             <label htmlFor='email'>Email:</label>
             <input name='email' value={email} onChange={handleChangeEmail}></input>
 
-            <button type='submit'>Add new student</button>
-            <div>{warning}</div>
+            <button type='submit'>Update student</button>
             <Link to={'/'}>Cancel</Link>
         </form>
     )
 }
 
 
-export default CreateStudent;
+export default UpdateStudent
