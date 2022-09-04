@@ -6,6 +6,7 @@ const GET_CAMPUS = 'GET-CAMPUS'
 const CREATE_CAMPUS = 'CREATE_CAMPUS'
 const DELETE_CAMPUS = 'DELETE_CAMPUS'
 const UPDATE_CAMPUS = 'UPDATE_CAMPUS'
+// const UPDATE_STUDENT = 'UPDATE_STUDENT'
 
 //action creator
 const getCampuses = (campuses)=>({
@@ -28,14 +29,27 @@ const updateCampus = (campus)=>({
      type:UPDATE_CAMPUS,
      campus
 })
+// const updateStudent = (campus, studentId)=>({
+//      type: UPDATE_STUDENT,
+//      campus,
+//      studentId,
+// })
 
 //thunk
-export const _getCampuses = () => {
+export const _getCampuses = (num) => {
      return async (dispatch) => {
-       const { data } = await axios.get('/api/campuses');
-       dispatch(getCampuses(data.sort((a, b)=> a.id - b.id)));
+       if (!num) {
+          const { data } = await axios.get('/api/campuses');
+          dispatch(getCampuses(data.sort((a, b)=> a.id - b.id)));
+       } else if (num === 1){
+          const {data} = await axios.get('/api/campuses?page=1')
+          
+       }
+
      };
  };
+
+
 export const _getCampus = (id) => {
      return async (dispatch) => {
           const {data} = await axios.get(`/api/campuses/${id}`);
@@ -60,6 +74,12 @@ export const _updateCampus = (id, campus)=>{
           disptch(updateCampus(data))
      }
 }
+// export const _updateStudent = (id, studentId)=>{
+//      return async (dispatch)=>{
+//           const {data} = await axios.get(`/api/campuses/${id}`)
+//           dispatch(updateStudent(data, studentId))
+//      }
+// }
 
 const initState = []
 //reducer function
@@ -80,6 +100,11 @@ const CampusReducer = (state=initState, action)=>{
 
           case UPDATE_CAMPUS:
                return action.campus
+
+          // case UPDATE_STUDENT:
+          //      const newStudents = state.students.filter(itm=>
+          //           itm.id !== action.studentId)
+          //      return {...state, students:[...newStudents]}
 
           default:
                return state

@@ -13,18 +13,24 @@ const Nav = ()=>{
     },[])
     const campuses = useSelector(state=>state.campuses)
 
+
     React.useEffect(()=>{
         dispatch(_getStudents())
     },[])
     const students = useSelector(state=>state.students)
 
+
     return(
-        <nav>
-            <Link to={'/campuses'}>All Campuses({campuses.length})!!</Link>
-            <span> </span>
-            <Link to={'/students'}>All Students({students.length})!!</Link>
-        </nav>
-    
+        (campuses.length || !Array.isArray(campuses)) && (students.length || !Array.isArray(students))
+        ?
+            <nav>
+                <Link to={'/campuses'}>All Campuses({campuses.length})!!</Link>
+                <span> </span>
+                <Link to={'/students'}>All Students({students.length})!!</Link>
+            </nav>
+        :
+            <div>loading</div>
+
     )
 }
 

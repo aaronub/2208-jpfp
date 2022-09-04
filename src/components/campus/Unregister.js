@@ -8,17 +8,13 @@ import { _getCampus } from '../../redux/CampusReducer';
 
 const Unregister = (props)=>{
     const dispatch = useDispatch()
-    const [change, setChange] = React.useState(false)
-
+    
     const handleClick = ()=>{
         dispatch(_updateStudentCampusId(props.data.id, {campusId: null}));
-        setChange(!change)
-        // dispatch(_getCampus(props.campusId))
+
+        // dispatch(_updateStudent(props.campusId, props.data.id))
     }
 
-    React.useEffect(()=>{
-        dispatch(_getCampus(props.campusId))
-    },[change])
 
     return(
         <div>

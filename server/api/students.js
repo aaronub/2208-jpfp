@@ -1,13 +1,29 @@
 const router = require('express').Router();
 const {Student} = require('../db')
 const {Campus} = require('../db')
+const {Op} = require('sequelize')
 
 
-//GET /api/students
-router.get('/', async(req,res,rext)=>{
+//GET /api/students, /api/students?page=1 - 10
+router.get('/', async(req,res,next)=>{
     try {
-        const students = await Student.findAll();
-        res.send(students);
+        if (req.query.page) {
+            for (let i = 1; i <= 10; i++) {
+                if (req.query.page === String(i)) {
+                    const students = await Student.findAll({
+                        where:{
+                            id:{
+                                [Op.between]:[i*10-9,i*10],
+                            }
+                        }
+                    })
+                    res.send(students)
+                }               
+            }
+        } else {       
+            const students = await Student.findAll();
+            res.send(students);
+        }
         
     } catch (error) {
         next(error)

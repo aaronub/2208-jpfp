@@ -17,7 +17,7 @@ const Student = (props)=>{
             <p>{props.data.email}</p>
             <p>{props.data.gpa}</p>
             <img src={props.data.imageUrl}/>
-            <Link to={`/students/${props.data.id}`}>{props.data.firstName+' '+props.data.lastName}</Link>
+            <Link to={`/students/${props.data.id}`}>Details about {props.data.firstName+' '+props.data.lastName}</Link>
             <button onClick={handleDelete}>X</button>
         </div>
     )

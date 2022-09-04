@@ -2,7 +2,6 @@ import React from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import {useParams} from 'react-router-dom';
 import { _getCampus } from '../../redux/CampusReducer';
-import {Link} from 'react-router-dom'
 import UpdateCampus from './UpdateCampus';
 import Unregister from './Unregister';
 import { _updateStudentCampusId } from '../../redux/StudentReducer';
@@ -16,7 +15,7 @@ const CampusPage = ()=>{
     },[])
 
     const campus = useSelector(state => state.campuses)
-    console.log('campus:', campus)
+
 
     return (
         <div>

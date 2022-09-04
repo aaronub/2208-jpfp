@@ -7,6 +7,7 @@ const CREATE_STUDENT = 'CREATE_STUDENT'
 const DELETE_STUDENT = 'DELETE_STUDENT'
 const UPDATE_STUDENT = 'UPDATE_STUDENT'
 const UPDATE_STUDENT_CAMPUSID = 'UPDATE_STUDENT_CAMPUSID'
+const Filter_STUDENT = 'FILTER_STUDENT'
 
 //action creator
 const getStudents = (students) => ({
@@ -32,6 +33,10 @@ const updateStudent = (student)=>({
 const updateStudentCampusId = (student)=>({
      type:UPDATE_STUDENT_CAMPUSID,
      student
+})
+export const filterStudent = (students)=>({
+     type:Filter_STUDENT,
+     students,
 })
 
 //thunk
@@ -69,6 +74,7 @@ export const _updateStudent = (id, student)=>{
 export const _updateStudentCampusId = (id, student)=>{
      return async(dispatch)=>{
           const {data} = await axios.put(`/api/students/${id}`, student)
+
           dispatch(updateStudentCampusId(data))
      }
 }
@@ -96,6 +102,9 @@ const StudentReducer = (state=initState, action)=>{
 
           case UPDATE_STUDENT_CAMPUSID:
                return action.student
+
+          case Filter_STUDENT:
+               return [...state.filter(itm => !itm.campusId)]
 
           default:
                return state

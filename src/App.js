@@ -19,7 +19,7 @@ function App(){
                 <Route path={'students'} element={<Students/>}/>
                 <Route path={'campuses/:id'} element={<CampusPage/>}/>
                 <Route path={'students/:id'} element={<StudentPage/>}/>
-                {/* <Route path={'*'} element={<NotFound/>}/> */}
+                <Route path={'*'} element={<NotFound/>}/>
             </Routes>
 
         </>

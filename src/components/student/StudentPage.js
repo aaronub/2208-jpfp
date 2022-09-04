@@ -19,7 +19,9 @@ const StudentPage = ()=>{
 
     return (
         <div>
-            <div>{student.firstName + ' ' + student.lastName}</div>
+            <div>
+                { student ? <div>{student.firstName + ' ' + student.lastName}</div> : 'Student not found!'}  
+            </div>
             <div>{student.email}</div>
             <div>{student.gpa}</div>
             <img src={student.imageUrl}/>
