@@ -8,17 +8,16 @@ import { _getStudents } from '../redux/StudentReducer';
 
 const Nav = ()=>{
     const dispatch = useDispatch();
+
     React.useEffect(()=>{
         dispatch(_getCampuses())
     },[])
     const campuses = useSelector(state=>state.campuses)
 
-
     React.useEffect(()=>{
         dispatch(_getStudents())
     },[])
     const students = useSelector(state=>state.students)
-
 
     return(
         (campuses.length || !Array.isArray(campuses)) && (students.length || !Array.isArray(students))
@@ -29,7 +28,7 @@ const Nav = ()=>{
                 <Link to={'/students'}>All Students({students.length})!!</Link>
             </nav>
         :
-            <div>loading</div>
+            <h1>Loading...</h1>
 
     )
 }

@@ -42,9 +42,9 @@ const CreateStudent = ()=>{
             <label htmlFor='email'>Email:</label>
             <input name='email' value={email} onChange={handleChangeEmail}></input>
 
-            <button type='submit'>Add new student</button>
-            <div>{warning}</div>
+            <button class='submit' type='submit'>Add new student</button>
             <Link to={'/'}>Cancel</Link>
+            <div>{warning}</div>
         </form>
     )
 }

@@ -15,6 +15,12 @@ const Students = ()=>{
     const students = useSelector(state=>state.students)
     const [sortedStudents, setSortedStudents] = React.useState(students)
 
+    // without this, directly refresh in, sortedStudents always [], students change, but 
+    // sortedStudents not changed together
+    React.useEffect(()=>{
+        setSortedStudents(students)
+    },[students])
+
     const hanldeSorting = (event)=>{
         const sorting = event.target.value
         if (sorting === 'gpa') {
@@ -39,10 +45,6 @@ const Students = ()=>{
         dispatch(filterStudent(students))
     }
 
-    // console.log('students', students)
-    // Always [] before select onChange????
-    // console.log('sortedStudents', sortedStudents)
-
     return(
         <div>
             <p></p>
@@ -54,7 +56,7 @@ const Students = ()=>{
             </select>
             <p></p>
             <button onClick={showUnregisteredStudents}>Unregistered students list</button>
-            <div>
+            <div id='students'>
                 {Array.isArray(students)
                 ? (sortedStudents.length
                     ? sortedStudents.map(itm=><Student key={itm.id} data={itm}/>)

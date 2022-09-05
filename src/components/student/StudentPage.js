@@ -15,7 +15,7 @@ const StudentPage = ()=>{
     },[])
 
     const student = useSelector(state => state.students)
-    console.log('student:', student)
+    
 
     return (
         <div>

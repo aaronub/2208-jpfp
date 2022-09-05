@@ -11,13 +11,14 @@ const Campus = (props)=>{
     }
 
     return(
-        <div>
-            <h1>{props.data.name}</h1>
+        <div class='single-item'>           
+            <h1 class='list-title'><Link to={`/campuses/${props.data.id}`}>{props.data.name}</Link></h1>
             <p>{props.data.address}</p>
             <p>{props.data.description}</p>
-            <img src={props.data.imageUrl}/>
+            <Link to={`/campuses/${props.data.id}`}><img src={props.data.imageUrl}/></Link>
+            <br/>
             <Link to={`/campuses/${props.data.id}`}>Details about {props.data.name}</Link>
-            <button onClick={handleDelete}>X</button>
+            <button class='x' onClick={handleDelete}>X</button>
         </div>
     )
 }

@@ -39,7 +39,7 @@ const UpdateStudent = ()=>{
             <label htmlFor='email'>Email:</label>
             <input name='email' value={email} onChange={handleChangeEmail}></input>
 
-            <button type='submit'>Update student</button>
+            <button class='submit' type='submit'>Update student</button>
             <Link to={'/'}>Cancel</Link>
         </form>
     )

@@ -14,7 +14,7 @@ const Campuses = ()=>{
 
     const campuses = useSelector(state=>state.campuses)
     const students  = useSelector(state=>state.students)
-    console.log('Campuses component, students', students)
+ 
 
     return(
         <div>
@@ -24,7 +24,7 @@ const Campuses = ()=>{
             <select>
                 <option>Sorted by enrollments counts</option>
             </select>
-            <div>
+            <div id='campuses'>
                 {Array.isArray(campuses) ? campuses.map(itm=>
                     <Campus key={itm.id} campusId={itm.id} data={itm}/>    
                 ): null}

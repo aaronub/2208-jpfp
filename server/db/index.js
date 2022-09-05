@@ -314,24 +314,28 @@ const campuses =
   "address": "18 Springview Drive"
 }]
 const students =[{
+
   firstName: 'Aaron',
   lastName: 'Wang',
   email: 'wo-08@hotmail.com',
   imageUrl: 'https://l450v.alamy.com/450v/2hwe125/little-boy-in-tracksuit-guy-got-ready-for-sports-activities-cheerful-person-standing-pose-cartoon-comic-style-flat-design-single-character-2hwe125.jpg',
   gpa: 3.9,
 },{
+
   firstName: 'Dora',
   lastName: 'Zhang',
   email: 'dorazhang86@gmail.com',
   imageUrl: 'https://l450v.alamy.com/450v/2h9h5jy/female-cook-in-overalls-girl-from-kitchen-in-an-apron-cheerful-person-standing-pose-cartoon-comic-style-flat-design-single-character-2h9h5jy.jpg',
   gpa: 3.7,
 },{
+
   firstName: 'Tom',
   lastName: 'Li',
   email: 'tomli00@gmail.com',
   imageUrl: 'https://c8.alamy.com/zooms/6/e5566fcb06c6469d9b8078805fd0bd29/2h7ce4f.jpg',
   gpa: 3.8, 
 },{
+
   firstName: 'Jerry',
   lastName: 'Dong',
   email: 'jerryzhao00@gmail.com',

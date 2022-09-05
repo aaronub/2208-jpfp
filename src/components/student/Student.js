@@ -11,14 +11,14 @@ const Student = (props)=>{
     }
 
     return(
-        <div>
-            <h1>{props.data.firstName}</h1>
-            <h1>{props.data.lastName}</h1>
+        <div class='single-student-item'>
+            <h1><Link to={`/students/${props.data.id}`}>{props.data.firstName + ' ' + props.data.lastName}</Link></h1>
             <p>{props.data.email}</p>
             <p>{props.data.gpa}</p>
-            <img src={props.data.imageUrl}/>
+            <Link  to={`/students/${props.data.id}`}><img id='student-image' src={props.data.imageUrl}/></Link>
+            <br/>
             <Link to={`/students/${props.data.id}`}>Details about {props.data.firstName+' '+props.data.lastName}</Link>
-            <button onClick={handleDelete}>X</button>
+            <button class='x' onClick={handleDelete}>X</button>
         </div>
     )
 }

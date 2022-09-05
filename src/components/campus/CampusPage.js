@@ -19,12 +19,15 @@ const CampusPage = ()=>{
 
     return (
         <div>
+            <div>
+                { campus ? null : 'Campus not found!'}  
+            </div>
             <div>{campus.name}</div>
             <div>{campus.address}</div>
             <div>{campus.description}</div>
             <img src={campus.imageUrl}/>
             <div>{!Array.isArray(campus) 
-                ? ( campus.students 
+                ? ( campus && campus.students.length 
                     ? 
                     <div>
                         <div>Students:</div>
@@ -34,7 +37,7 @@ const CampusPage = ()=>{
                                 <div></div>
                             </div>) }   
                     </div>
-                    : 'Campus not found!'
+                    : 'Students: No students registered yet!'
                 ) 
                 : null}
             </div>
